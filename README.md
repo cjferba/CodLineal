@@ -1,4 +1,0 @@
-CodLineal
-=========
-
-codificacion lineal
