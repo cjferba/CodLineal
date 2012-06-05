@@ -36,6 +36,13 @@ def set_color(color, handle=std_out_handle):
     bool = ctypes.windll.kernel32.SetConsoleTextAttribute(handle, color)
     return bool
 
+def igual(a,b):
+	cont=0
+	for i in range(len(a)):
+		if a[i]<>b[i]:
+			cont=cont+1
+	return cont
+
 
 def std(matriz,zeta):
 	n_filas=len(matriz)
@@ -354,6 +361,9 @@ for i in range(len(codificacion1)):
 				print repr(codificacion1[i][s]).rjust(3)+',',
 				set_color(0x07)
 print '\nDecodificando'
+dif=[]
+for i in range(len(codificacion)):
+	dif.append(igual(codificacion[i],codificacion1[i]))
 for i in range(len(codificacion1)):
 	iden=dot(codificacion1[i],Ht)
 	iden=iden.tolist()
@@ -375,6 +385,8 @@ for i in range(len(decodificacion)):
 	a=palabras1.index(decodificacion[i])
 	if cadena[i]<>letras[a]:
 		set_color(color[2])
+	if dif[i]==1:
+		set_color(color[0])
 	print letras[a],
 	set_color(0x07)
 
